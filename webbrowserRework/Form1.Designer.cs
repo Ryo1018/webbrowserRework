@@ -34,7 +34,7 @@ namespace webbrowserRework
             this.btnBack = new System.Windows.Forms.Button();
             this.btnForward = new System.Windows.Forms.Button();
             this.btnHome = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtUrl = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
@@ -50,6 +50,7 @@ namespace webbrowserRework
             this.browser.Name = "browser";
             this.browser.Size = new System.Drawing.Size(800, 419);
             this.browser.TabIndex = 0;
+            this.browser.Navigated += new System.Windows.Forms.WebBrowserNavigatedEventHandler(this.browser_Navigated);
             // 
             // panel1
             // 
@@ -64,6 +65,7 @@ namespace webbrowserRework
             // 
             // btnBack
             // 
+            this.btnBack.Enabled = false;
             this.btnBack.Location = new System.Drawing.Point(53, 3);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(33, 23);
@@ -74,6 +76,7 @@ namespace webbrowserRework
             // 
             // btnForward
             // 
+            this.btnForward.Enabled = false;
             this.btnForward.Location = new System.Drawing.Point(92, 3);
             this.btnForward.Name = "btnForward";
             this.btnForward.Size = new System.Drawing.Size(33, 23);
@@ -92,13 +95,14 @@ namespace webbrowserRework
             this.btnHome.UseVisualStyleBackColor = true;
             this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
-            // textBox1
+            // txtUrl
             // 
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Location = new System.Drawing.Point(5, 5);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(659, 19);
-            this.textBox1.TabIndex = 3;
+            this.txtUrl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtUrl.Location = new System.Drawing.Point(5, 5);
+            this.txtUrl.Name = "txtUrl";
+            this.txtUrl.Size = new System.Drawing.Size(659, 19);
+            this.txtUrl.TabIndex = 3;
+            this.txtUrl.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUrl_KeyDown);
             // 
             // panel2
             // 
@@ -115,7 +119,7 @@ namespace webbrowserRework
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.panel3.Controls.Add(this.textBox1);
+            this.panel3.Controls.Add(this.txtUrl);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(131, 0);
             this.panel3.Name = "panel3";
@@ -146,7 +150,7 @@ namespace webbrowserRework
         private System.Windows.Forms.WebBrowser browser;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtUrl;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Button btnForward;

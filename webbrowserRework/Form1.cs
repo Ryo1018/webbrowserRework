@@ -38,5 +38,29 @@ namespace webbrowserRework
         {
             browser.GoForward();
         }
+
+        private void browser_Navigated(object sender, WebBrowserNavigatedEventArgs e)
+        {
+            //ページ移動した後のイベント
+            txtUrl.Text = browser.Url.ToString();
+            /*
+            if (browser.CanGoBack)
+            {
+                btnBack.Enabled = true;
+            }
+            */
+
+            btnBack.Enabled = browser.CanGoBack;
+            btnForward.Enabled = browser.CanGoForward;
+        }
+
+        private void txtUrl_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode.Equals(Keys.Enter))
+            {
+                //Enterが押された時
+                browser.Url = new Uri(txtUrl.Text);
+            }
+        }
     }
 }
